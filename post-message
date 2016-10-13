@@ -1,16 +1,18 @@
 #!/bin/bash
 set -e
 
-# set up ssh for github
-mkdir -p ~/.ssh
-echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
-chmod 400 ~/.ssh/id_rsa
-ssh-keyscan github.com >> ~/.ssh/known_hosts
-
 # clone the *wiki* repo
 mkdir -p ~/wiki
 cd ~/wiki
-git clone git@github.com:brigand/wiki-chat.wiki.git .
 
-ls
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+git clone https://$TOKEN:x-oauth-basic@github.com/brigand/wiki-chat.wiki.git .
+touch Chat.md
+echo "" >> Chat.md
+echo "$1" >> Chat.md
+git add Chat.md
+git commit -m "$1"
+git push origin master >/dev/null 2>&1
 
