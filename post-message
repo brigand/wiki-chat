@@ -15,4 +15,5 @@ echo "$1" >> Chat.md
 git add Chat.md
 git commit -m "$1"
 git push origin master >/dev/null 2>&1
+echo "Visit https://github.com/brigand/wiki-chat/wiki/Chat to see messages"
 
